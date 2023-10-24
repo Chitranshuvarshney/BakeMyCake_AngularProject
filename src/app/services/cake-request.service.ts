@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CakeRequestService {
-  URL: string = 'http://localhost:3000/cakeRequests';
+  URL: string = 'https://bake-my-cake-backend-data.vercel.app/cakeRequests';
   constructor(private http: HttpClient) {}
 
   getAllCakeRequests(): Observable<Array<CakeRequest>> {
