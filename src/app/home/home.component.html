@@ -1,0 +1,76 @@
+<div class="header">
+  <mat-toolbar style="height: 70px" color="primary">
+    <img class="logo" src="../../assets/images/logo.png" alt="bakery-logo" />
+    <h1 class="heading">Cake N Cookies</h1>
+    <button matTooltip="Home" class="icon" mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button
+      matTooltip="Cake Requests"
+      mat-icon-button
+      routerLink="../cake-requests"
+    >
+      <mat-icon>assignment</mat-icon>
+    </button>
+    <button matTooltip="Login" mat-icon-button routerLink="../login">
+      <mat-icon>login</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div style="margin-top: 20px">
+    <h1 style="font-weight: 500; margin-left: 60px">
+      Celebrate Special Occasions
+    </h1>
+    <div id="top-img">
+      <span class="img-box"
+        ><img
+          class="top-img1"
+          src="../../assets/images/Birthday.jpg"
+          alt="Birthday-pic"
+        />
+        <h2>Birthday</h2></span
+      >
+      <span class="img-box"
+        ><img
+          class="top-img1"
+          src="../../assets/images/Anniversary.webp"
+          alt="Anniversary-pic"
+        />
+        <h2>Anniversary</h2></span
+      >
+    </div>
+  </div>
+
+  <app-cake-list></app-cake-list>
+
+  <footer class="footer">
+    <div style="background-color: lightgray; padding: 7px; color: black">
+      <h3>
+        Connect with Us :
+        <span>
+          <a mat-icon-button target="_blank" href="https://www.facebook.com"
+            ><img
+              class="social-logo"
+              src="../../assets/images/facebook.png"
+              alt="facebook-logo"
+          /></a>
+          <a mat-icon-button target="_blank" href="https://www.instagram.com"
+            ><img
+              class="social-logo"
+              src="../../assets/images/instagram.png"
+              alt="instagram-logo"
+          /></a>
+          <a mat-icon-button target="_blank" href="https://www.twitter.com"
+            ><img
+              class="social-logo"
+              src="../../assets/images/twitter.png"
+              alt="twitter-logo"
+          /></a>
+        </span>
+      </h3>
+    </div>
+    <h3 style="padding: 15px">
+      &copy; 2023 Cake N Cookies. All Rights Reserved
+    </h3>
+  </footer>
+</div>

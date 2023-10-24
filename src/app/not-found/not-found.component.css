@@ -1,0 +1,13 @@
+#message {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 15px;
+  box-shadow: 5px 5px 15px gray;
+}
+
+a {
+  color: red;
+}

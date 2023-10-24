@@ -1,0 +1,32 @@
+<mat-toolbar class="icon" style="height: 70px" color="primary">
+  <h1 style="text-shadow: 5px 5px 8px black">Administrator Login</h1>
+  <button matTooltip="Logout" mat-icon-button routerLink="">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+<div id="login-form">
+  <h3>If you are a Administrator, enter your Login Code</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter Login Code</mat-label>
+    <input
+      matInput
+      name="loginCode"
+      [type]="hide ? 'password' : 'text'"
+      [(ngModel)]="loginCode"
+      placeholder="Login Code"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-button color="primary" (click)="validateLoginCode()">
+    Submit
+  </button>
+  <h3>If you are a Customer, <a routerLink="">click here</a></h3>
+</div>

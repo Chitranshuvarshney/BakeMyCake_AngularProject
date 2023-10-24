@@ -1,0 +1,247 @@
+<mat-toolbar style="height: 70px" color="primary">
+  <img class="logo" src="../../assets/images/logo.png" alt="bakery-logo" />
+  <h1 class="heading">Cake N Cookies</h1>
+  <button matTooltip="Home" class="icon" mat-icon-button routerLink="">
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>
+
+<section id="cake-content">
+  <div id="cake-detail">
+    <h1 style="font-weight: 500">{{ cake?.cakeName }}</h1>
+    <h3>
+      <mat-icon color="accent" *ngFor="let star of stars">star</mat-icon>
+    </h3>
+    <img src="../../assets/images/{{ cake?.image }}.jpg" alt="cake-image" />
+    <h2>{{ cake?.category }}</h2>
+    <p>{{ cake?.description }}</p>
+  </div>
+
+  <form
+    id="cake-request"
+    (ngSubmit)="makeRequest(orderRequestForm)"
+    #orderRequestForm="ngForm"
+  >
+    <h1 style="font-weight: 500">Order this Cake</h1>
+    <h2>
+      Cake Price Rs {{ cake?.cakePrice }}
+      <span style="font-size: small"> PER CAKE</span>
+    </h2>
+    <h3>When do you want delivery?</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Select Date</mat-label>
+      <input
+        name="dateOfDelivery"
+        placeholder="Select Date of Delivery"
+        matInput
+        [matDatepicker]="picker"
+        [min]="minDate"
+        required
+        [(ngModel)]="cakeRequest.dateOfDelivery"
+        #dateOfDelivery="ngModel"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+
+      <mat-error *ngIf="dateOfDelivery.errors?.['required']"
+        >Delivery date is required</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <h3>Enter your personal details</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        type="text"
+        name="customerName"
+        required
+        pattern="^[a-zA-Z\s]*$"
+        placeholder="Enter Name"
+        [(ngModel)]="cakeRequest.customerName"
+        #customerName="ngModel"
+      />
+      <mat-error *ngIf="customerName.errors?.['required']"
+        >Name is required</mat-error
+      >
+      <mat-error *ngIf="customerName.errors?.['pattern']"
+        >Name containing only alphabets
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        name="customerEmail"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        placeholder="Enter Email"
+        [(ngModel)]="cakeRequest.customerEmail"
+        #customerEmail="ngModel"
+      />
+      <mat-error *ngIf="customerEmail.errors?.['required']"
+        >Email id is required</mat-error
+      >
+      <mat-error *ngIf="customerEmail.errors?.['pattern']"
+        >Enter valid email id example : abc@gmail.com</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input
+        matInput
+        type="phone"
+        name="customerPhone"
+        required
+        minlength="10"
+        pattern="[6789][0-9]{9,9}"
+        placeholder="Enter Phone"
+        [(ngModel)]="cakeRequest.customerPhone"
+        #customerPhone="ngModel"
+      />
+      <mat-error *ngIf="customerPhone.errors?.['required']"
+        >Phone number is required
+      </mat-error>
+      <mat-error *ngIf="customerPhone.errors?.['pattern']"
+        >Enter valid phone number containing 10 digits starting with 6/7/8/9
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <h3>Enter address fields</h3>
+    <div class="address">
+      <mat-form-field appearance="outline">
+        <mat-label>House No.</mat-label>
+        <input
+          matInput
+          type="text"
+          name="houseNo"
+          required
+          placeholder="Enter House / Flat No."
+          [(ngModel)]="cakeRequest.houseNo"
+          #houseNo="ngModel"
+        />
+        <mat-error *ngIf="houseNo.errors?.['required']"
+          >House/Flat No. is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input
+          matInput
+          type="text"
+          name="street"
+          required
+          placeholder="Enter Street"
+          [(ngModel)]="cakeRequest.street"
+          #street="ngModel"
+        />
+        <mat-error *ngIf="street.errors?.['required']"
+          >Street is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br />
+    <div class="address">
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input
+          matInput
+          type="text"
+          name="city"
+          required
+          placeholder="Enter City"
+          [(ngModel)]="cakeRequest.city"
+          #city="ngModel"
+        />
+        <mat-error *ngIf="city.errors?.['required']"
+          >City is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input
+          matInput
+          type="text"
+          name="state"
+          required
+          placeholder="Enter State"
+          [(ngModel)]="cakeRequest.state"
+          #state="ngModel"
+        />
+        <mat-error *ngIf="state.errors?.['required']"
+          >State is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br />
+    <div class="address">
+      <mat-form-field appearance="outline">
+        <mat-label>Pin Code</mat-label>
+        <input
+          matInput
+          type="number"
+          name="pinCode"
+          required
+          pattern="^[0-9]{6}$"
+          placeholder="Enter Pin Code"
+          [(ngModel)]="cakeRequest.pinCode"
+          #pinCode="ngModel"
+        />
+        <mat-error *ngIf="pinCode.errors?.['required']"
+          >Pin Code is required
+        </mat-error>
+        <mat-error *ngIf="pinCode.errors?.['pattern']"
+          >Pin Code should be in 6 digits
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br />
+    <h3>Total Bill</h3>
+    <mat-form-field appearance="outline" id="quantity">
+      <mat-label>Quantity</mat-label>
+      <input
+        type="number"
+        matInput
+        name="quantity"
+        placeholder="Enter Cake Quantity"
+        [(ngModel)]="cakeRequest.quantity"
+        required
+        min="1"
+        #quantity="ngModel"
+      />
+      <mat-error *ngIf="quantity.errors?.['required']"
+        >Quantity is required</mat-error
+      >
+      <mat-error *ngIf="quantity.errors?.['min']"
+        >Quantity cannot be less than 1</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Total Bill</mat-label>
+      <input
+        type="text"
+        matInput
+        [value]="calculateTotalPrice()"
+        readonly
+      /> </mat-form-field
+    ><br />
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="orderRequestForm.invalid"
+    >
+      Make Order
+    </button>
+    <br />
+    <button mat-flat-button color="accent" type="reset">Reset Order</button>
+  </form>
+</section>

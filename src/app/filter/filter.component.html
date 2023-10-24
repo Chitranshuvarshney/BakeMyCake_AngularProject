@@ -1,0 +1,28 @@
+<div>
+  <mat-button-toggle-group
+    [(ngModel)]="filterByCategory"
+    (ngModelChange)="Onfilter()"
+    class="chips"
+  >
+    <mat-button-toggle value="all" class="chip">All</mat-button-toggle>
+    <mat-button-toggle value="cupCake" class="chip"
+      >Cup-cakes</mat-button-toggle
+    >
+    <mat-button-toggle value="cookie" class="chip">Cookies</mat-button-toggle>
+    <mat-button-toggle value="cake" class="chip">Cakes</mat-button-toggle>
+    <mat-button-toggle value="brownie" class="chip">Brownies</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <span class="filter">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter items by category</mat-label>
+      <mat-select [(ngModel)]="filterByCategory" (ngModelChange)="Onfilter()">
+        <mat-option value="all">All</mat-option>
+        <mat-option value="cupCake">Cup-cakes</mat-option>
+        <mat-option value="cookie">Cookies</mat-option>
+        <mat-option value="cake">Cakes</mat-option>
+        <mat-option value="brownie">Brownies</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+</div>

@@ -1,0 +1,15 @@
+<div id="search">
+  <mat-form-field appearance="outline">
+    <mat-label>Search Cake</mat-label>
+    <input
+      placeholder="Enter Cake Name"
+      matInput
+      type="text"
+      (input)="search()"
+      [(ngModel)]="searchText"
+    />
+  </mat-form-field>
+  <button mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+</div>

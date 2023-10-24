@@ -1,0 +1,13 @@
+#order-section {
+  width: 90%;
+  margin: auto;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  margin: 50px auto;
+}

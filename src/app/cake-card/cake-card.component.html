@@ -1,0 +1,40 @@
+<mat-card matRipple class="cake-card">
+  <img class="img" src="../../assets/images/{{ cake?.image }}.jpg" />
+
+  <mat-card-header>
+    <mat-card-subtitle>
+      <img src="../../assets/images/rating.jpg" alt="rating" />{{
+        cake?.rating
+      }}
+    </mat-card-subtitle>
+    <mat-card-title style="font-size: large" class="title">{{
+      cake?.cakeName
+    }}</mat-card-title>
+    <mat-card-title>
+      <div style="font-size: large">Rs {{ cake?.cakePrice }}</div>
+    </mat-card-title>
+    <mat-card-subtitle id="delivery"
+      >Earliest Delivery:
+      <span>{{ cake?.earliestDelivery }}</span></mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-actions>
+    <!-- <mat-icon
+      routerLink="cake-order/{{ cake.id }}"
+      class="icon"
+      color="primary"
+      matTooltip="add to order"
+      >shopping_cart</mat-icon
+    > -->
+    <button
+      class="cart-btn"
+      matTooltip="add to cart"
+      mat-raised-button
+      color="warn"
+      routerLink="../cake-order/{{ cake?.id }}"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+      ORDER THIS
+    </button>
+  </mat-card-actions>
+</mat-card>
